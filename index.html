@@ -35,6 +35,7 @@
   button { padding: 12px 18px; font-family: 'Barlow Condensed', 'Arial Narrow', Arial, sans-serif; font-weight: 800; font-size: 18px; letter-spacing: 0.08em;
            background: #121a2e; color: #f2d7a0; border: 2px solid #121a2e; cursor: pointer; }
   button:hover { background: #1d1f1a; }
+  .done { margin: 20px 0 8px; padding: 14px 16px; background: #121a2e; color: #f2d7a0; font-weight: 600; }
   .fine { font-size: 12px; line-height: 18px; color: #5b5a4c; }
   .foot { padding: 16px 24px 24px; border-top: 1px dashed #5b5a4c; font-size: 12px; line-height: 18px; color: #5b5a4c; }
   @media (max-width: 640px) { .wrap { margin: 0; } .bar, .mast, .body, .foot { padding-left: 16px; padding-right: 16px; } }
@@ -63,9 +64,27 @@
       <input id="email" type="email" name="email_address" placeholder="you@example.com" autocomplete="email" required>
       <button type="submit">SUBSCRIBE</button>
     </form>
+    <div id="done" class="done" hidden>You're on the list. The next issue lands in your inbox Monday, Wednesday or Friday morning.</div>
     <div class="fine">No spam. Unsubscribe from any issue in one click.</div>
   </div>
   <div class="foot">Market commentary, not investment advice. Also on X: <a href="https://x.com/CollectorRecon">@CollectorRecon</a></div>
 </main>
+<script>
+  // Subscribe in place so readers stay on this page; if the request fails, fall back to Kit's own page.
+  var form = document.querySelector('form');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var button = form.querySelector('button');
+    button.disabled = true;
+    fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
+      .then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
+      .then(function (data) {
+        if (data.status !== 'success') throw data;
+        form.style.display = 'none';
+        document.getElementById('done').hidden = false;
+      })
+      .catch(function () { form.submit(); });
+  });
+</script>
 </body>
 </html>
