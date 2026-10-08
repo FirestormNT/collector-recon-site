@@ -5,70 +5,74 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light">
 <title>Collector Recon Newsletter</title>
-<meta name="description" content="Graded TCG, video game and anime art market intel. Sold comps, auction results and catalyst dates, Monday, Wednesday and Friday.">
+<meta name="description" content="Big sales, market stats, news catalysts and drop and auction dates for graded TCG, video games and anime art. Monday, Wednesday and Friday.">
 <meta property="og:title" content="Collector Recon Newsletter">
 <meta property="og:description" content="Know the market. Collect with conviction. Graded TCG, video games and anime art, Mon/Wed/Fri.">
 <meta property="og:image" content="https://firestormnt.github.io/collector-recon-site/logo.png">
 <meta name="twitter:card" content="summary">
 <link rel="icon" href="logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&amp;family=Fraunces:ital,opsz,wght,SOFT@0,9..144,700;1,9..144,500,100&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap">
 <style>
+  :root { --surface:#e9e1cf; --ink:#1d1f1a; --ink-muted:#5b5a4c; --inv-surface:#121a2e; --inv-raised:#1b2540; --inv-ink:#f1ead9; --inv-muted:#a9b0c2; --inv-rule:#2c3858; --inv-accent:#f2d7a0; --inv-accent-ink:#121a2e; }
   * { box-sizing: border-box; }
-  body { margin: 0; background: #ddd3bd; color: #1d1f1a; font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace; }
-  a { color: #7a5719; }
-  .wrap { max-width: 600px; margin: 40px auto 56px; background: #e9e1cf; }
-  .bar { display: flex; justify-content: space-between; gap: 12px; padding: 14px 24px 10px; border-bottom: 2px solid #1d1f1a;
-         font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; }
-  .mast { padding: 28px 24px 8px; }
-  .brand { display: flex; align-items: center; gap: 12px; }
-  .brand img { width: 52px; height: 52px; }
-  .brand span { font-family: 'Barlow Condensed', 'Arial Narrow', Arial, sans-serif; font-weight: 800; font-size: 34px; line-height: 32px; }
-  .tag { padding-top: 12px; font-family: Fraunces, Georgia, serif; font-style: italic; font-size: 16px; color: #7a5719; }
-  .lanes { padding-top: 12px; font-size: 13px; font-weight: 500; color: #5b5a4c; }
-  .body { padding: 16px 24px 32px; font-size: 15px; line-height: 24px; }
-  h1 { font-family: Fraunces, Georgia, serif; font-size: 30px; line-height: 34px; margin: 8px 0 12px; }
-  ul { padding-left: 18px; margin: 12px 0 20px; }
-  li { margin-bottom: 6px; }
-  form { display: flex; gap: 8px; flex-wrap: wrap; margin: 20px 0 8px; }
-  input[type=email] { flex: 1 1 240px; min-width: 0; padding: 12px; font: inherit; border: 2px solid #1d1f1a; background: #f6f1e4; border-radius: 0; }
-  button { padding: 12px 18px; font-family: 'Barlow Condensed', 'Arial Narrow', Arial, sans-serif; font-weight: 800; font-size: 18px; letter-spacing: 0.08em;
-           background: #121a2e; color: #f2d7a0; border: 2px solid #121a2e; cursor: pointer; }
-  button:hover { background: #1d1f1a; }
-  .done { margin: 20px 0 8px; padding: 14px 16px; background: #121a2e; color: #f2d7a0; font-weight: 600; }
-  .fine { font-size: 12px; line-height: 18px; color: #5b5a4c; }
-  .foot { padding: 16px 24px 24px; border-top: 1px dashed #5b5a4c; font-size: 12px; line-height: 18px; color: #5b5a4c; }
-  @media (max-width: 640px) { .wrap { margin: 0; } .bar, .mast, .body, .foot { padding-left: 16px; padding-right: 16px; } }
+  body { margin: 0; background: var(--surface); color: var(--ink); font-family: 'IBM Plex Mono', ui-monospace, Menlo, monospace; font-size: 15px; line-height: 24px; }
+  a { color: var(--ink-muted); } a:hover { color: var(--ink); }
+  a:focus-visible, button:focus-visible, input:focus-visible { outline: none; box-shadow: 0 0 0 2px var(--inv-surface), 0 0 0 4px var(--inv-accent); }
+  input::placeholder { color: currentColor; opacity: .7; }
+  .page { min-height: 100vh; padding: 48px 16px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 24px; }
+  main { width: 100%; max-width: 680px; display: flex; flex-direction: column; }
+  .tabs { display: flex; flex-wrap: wrap; gap: 4px; font-size: 11px; line-height: 14px; font-weight: 600; letter-spacing: 0.16em; }
+  .tabs span { background: var(--inv-surface); color: var(--inv-ink); padding: 11px 18px; border-radius: 4px 4px 0 0; }
+  .card { background: var(--inv-surface); color: var(--inv-ink); padding: clamp(24px, 6vw, 56px); display: flex; flex-direction: column; align-items: center; gap: 24px; text-align: center; }
+  .seal { width: 112px; height: 112px; border-radius: 50%; background: conic-gradient(from 30deg, #f2d7a0, #f6b8c8, #c9b6f2, #9fd8e8, #b8eec4, #f2e4a0, #f2d7a0); box-shadow: 0 0 0 1px rgba(18, 26, 46, 0.35); transform: rotate(-10deg); }
+  .kicker { font-size: 11px; line-height: 14px; font-weight: 600; letter-spacing: 0.16em; color: var(--inv-muted); }
+  h1 { margin: 0; font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif; font-weight: 800; font-size: clamp(44px, 7vw, 64px); line-height: 0.94; letter-spacing: 0.005em; text-transform: uppercase; text-wrap: balance; }
+  .lede { margin: 0; max-width: 44ch; text-wrap: pretty; }
+  form { width: 100%; max-width: 520px; display: flex; flex-direction: column; gap: 8px; }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .row { display: flex; flex-wrap: wrap; gap: 8px; }
+  input[type=email] { flex: 1 1 240px; min-width: 0; height: 52px; padding: 0 16px; border-radius: 4px; border: 1px solid var(--inv-rule); background: var(--inv-raised); color: var(--inv-ink); font: inherit; }
+  button { flex: 1 0 auto; height: 52px; padding: 0 24px; border: 0; border-radius: 4px; background: var(--inv-accent); color: var(--inv-accent-ink); font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif; font-weight: 800; font-size: 20px; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; }
+  button:disabled { opacity: .7; cursor: wait; }
+  .fine { font-size: 13px; line-height: 20px; color: var(--inv-muted); }
+  .done { width: 100%; max-width: 520px; display: flex; flex-direction: column; gap: 4px; padding: 16px; border: 1px dashed var(--inv-rule); border-radius: 4px; }
+  .done b { font-size: 11px; line-height: 14px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--inv-accent); }
+  footer { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 24px; font-size: 11px; line-height: 14px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-muted); }
+  [hidden] { display: none !important; }
 </style>
 </head>
 <body>
-<main class="wrap">
-  <div class="bar"><span>RECON // NEWSLETTER</span><span>MON &middot; WED &middot; FRI</span></div>
-  <div class="mast">
-    <div class="brand"><img src="logo.png" alt=""><span>COLLECTOR RECON NEWSLETTER</span></div>
-    <div class="tag">Know the market. Collect with conviction.</div>
-    <div class="lanes">TCG &middot; VIDEO GAMES &middot; ANIME</div>
-  </div>
-  <div class="body">
-    <h1>The graded market, three times a week.</h1>
-    Free, in your inbox Monday, Wednesday and Friday morning:
-    <ul>
-      <li>The week's biggest graded sales, with real numbers and sources</li>
-      <li>Auction Watch: standout lots in open sales before they close</li>
-      <li>Release and catalyst dates that move prices</li>
-      <li>Full write-ups when a story deserves more than a post</li>
-    </ul>
-    <!-- Posts straight to the Kit form "Site Sign Up" (id 10017285); Kit stores the subscriber. -->
-    <form action="https://app.kit.com/forms/10017285/subscriptions" method="post" data-sv-form="10017285" data-uid="c84d50755f">
-      <label for="email" class="fine" style="position:absolute;left:-9999px;">Email address</label>
-      <input id="email" type="email" name="email_address" placeholder="you@example.com" autocomplete="email" required>
-      <button type="submit">SUBSCRIBE</button>
-    </form>
-    <div id="done" class="done" hidden>Almost there. Check your inbox for an email from collectorrecon@gmail.com and tap Confirm to start getting issues.</div>
-    <div class="fine">No spam. Unsubscribe from any issue in one click.</div>
-  </div>
-  <div class="foot">Market commentary, not investment advice. Also on X: <a href="https://x.com/CollectorRecon">@CollectorRecon</a></div>
-</main>
+<div class="page">
+  <main>
+    <div class="tabs"><span>TCG</span><span>VIDEO GAMES</span><span>ANIME</span></div>
+    <section class="card" aria-labelledby="title">
+      <div class="seal" aria-hidden="true">
+        <svg width="112" height="112" viewBox="0 0 120 120" fill="none"><defs><path id="ring" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0"></path></defs><text style="font-family: 'IBM Plex Mono', monospace; font-size: 9px; font-weight: 600; fill: #121a2e" textLength="270" lengthAdjust="spacing"><textPath href="#ring">VERIFIED INTEL · COLLECTOR RECON ·</textPath></text><circle cx="60" cy="60" r="34" stroke="#121a2e" stroke-opacity="0.5" stroke-width="0.75"></circle><circle cx="60" cy="60" r="18" stroke="#121a2e" stroke-width="2"></circle><path d="M60 34v14M60 72v14M34 60h14M72 60h14" stroke="#121a2e" stroke-width="2"></path><circle cx="60" cy="60" r="3.5" fill="#121a2e"></circle></svg>
+      </div>
+      <span class="kicker">COLLECTOR RECON // NEWSLETTER</span>
+      <h1 id="title">Know the market. Collect with conviction.</h1>
+      <p class="lede">Big sales, market stats, news catalysts and drop + auction dates for collectibles. <br>In your inbox.</p>
+      <!-- Posts straight to the Kit form "Site Sign Up" (id 10017285); Kit stores the subscriber. -->
+      <form action="https://app.kit.com/forms/10017285/subscriptions" method="post" data-sv-form="10017285" data-uid="c84d50755f">
+        <label for="email" class="sr">Email address</label>
+        <div class="row">
+          <input id="email" type="email" name="email_address" required autocomplete="email" placeholder="you@example.com">
+          <button type="submit">Subscribe</button>
+        </div>
+        <span class="fine">Monday, Wednesday and Friday mornings. Unsubscribe anytime.</span>
+      </form>
+      <div id="done" class="done" role="status" hidden>
+        <b>You're in</b>
+        <span>Check your inbox and tap Confirm to start getting issues.</span>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <a href="https://x.com/CollectorRecon">@CollectorRecon on X</a>
+    <span>Not investment advice</span>
+  </footer>
+</div>
 <script>
   // Subscribe in place so readers stay on this page; if the request fails, fall back to Kit's own page.
   var form = document.querySelector('form');
@@ -80,7 +84,7 @@
       .then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
       .then(function (data) {
         if (data.status !== 'success') throw data;
-        form.style.display = 'none';
+        form.hidden = true;
         document.getElementById('done').hidden = false;
       })
       .catch(function () { form.submit(); });
