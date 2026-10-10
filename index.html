@@ -63,6 +63,8 @@
       <!-- Posts straight to the Kit form "Site Sign Up" (id 10017285); Kit stores the subscriber. -->
       <form action="https://app.kit.com/forms/10017285/subscriptions" method="post" data-sv-form="10017285" data-uid="c84d50755f">
         <label for="email" class="sr">Email address</label>
+        <!-- The page URL, ?ref= included, so Kit records where each signup came from. -->
+        <input type="hidden" name="referrer" value="">
         <div class="row">
           <input id="email" type="email" name="email_address" required autocomplete="email" placeholder="you@example.com">
           <button type="submit">Subscribe</button>
@@ -82,6 +84,7 @@
 <script>
   // Subscribe in place so readers stay on this page; if the request fails, fall back to Kit's own page.
   var form = document.querySelector('form');
+  form.elements.referrer.value = location.href;
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     var button = form.querySelector('button');
